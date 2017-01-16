@@ -11,13 +11,14 @@
     "url": "git+https://github.com/scottfarmer2/github-avatar-downloader.git"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Scott Farmer",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/scottfarmer2/github-avatar-downloader/issues"
   },
   "homepage": "https://github.com/scottfarmer2/github-avatar-downloader#readme",
   "dependencies": {
     "request": "^2.79.0"
-  }
+  },
+  "devDependencies": {}
 }
