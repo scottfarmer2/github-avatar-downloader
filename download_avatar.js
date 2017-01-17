@@ -43,15 +43,3 @@ if (args[0] === null || args[1] === null){
      }
    });
    }
-// getRepoContributors("jquery", "jquery", function(err, data) {
-//   console.log('Errors:', err);
-//   for (var i = 0; i < data.length; i++) {
-//     downloadImageByURL(data[i].avatar_url, "./avatars/" + data[i].login + ".jpg");
-//   }
-// });
-// downloadImageByURL("https://avatars2.githubusercontent.com/u/2741?v=3&s=466", "avatars/kvirani.jpg")
-
-
-
-
-
