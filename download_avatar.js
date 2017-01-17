@@ -17,15 +17,41 @@ function getRepoContributors(repoOwner, repoName, cb) {
   request(options, function(error, response, body) {
     console.log(response.statusCode);
     if (!error && response.statusCode == 200) {
-      var data = JSON.parse(body);
-      cb(error, data);
+      cb(JSON.parse(body));
     }
   });
 }
 
-getRepoContributors("jquery", "jquery", function(err, data) {
-  console.log('Errors:', err);
-  for (var i = 0; i < data.length; i++) {
-    console.log("Result:", data[i].avatar_url);
-  }
-});
+function downloadImageByURL(url, filePath) {
+  request.get(url)
+    .on('error', function(err){
+      throw err;
+    })
+    .pipe(fs.createWriteStream(filePath))
+}
+
+var args = process.argv.slice(2);
+console.log(args[0]);
+console.log(args[1]);
+
+if (args[0] === null || args[1] === null){
+ console.log('Error, you must fill out repo owner/name.');
+ } else {
+   getRepoContributors(args[0], args[1], function(data) {
+     for(i = 0; i < data.length; i++){
+       downloadImageByURL(data[i].avatar_url, './avatars/' + data[i].id + ".jpg");
+     }
+   });
+   }
+// getRepoContributors("jquery", "jquery", function(err, data) {
+//   console.log('Errors:', err);
+//   for (var i = 0; i < data.length; i++) {
+//     downloadImageByURL(data[i].avatar_url, "./avatars/" + data[i].login + ".jpg");
+//   }
+// });
+// downloadImageByURL("https://avatars2.githubusercontent.com/u/2741?v=3&s=466", "avatars/kvirani.jpg")
+
+
+
+
+
